@@ -65,18 +65,20 @@ const promptProject = portfolioData => {
             message: 'Would you like to enter another project?',
             default: 'false'
         }
-    ]);
-};
-
-promptUser()
-    .then(promptProject)
-    .then(projectData => {
+    ]).then(projectData => {
         portfolioData.projects.push(projectData);
         if (projectData.confirmAddProject) {
             return promptProject(portfolioData);
         } else {
             return portfolioData;
         }
+    });
+};
+
+promptUser()
+    .then(promptProject)
+    .then(portfolioData => {
+        console.log(portfolioData);
     });
 
 // const fs = require('fs');
